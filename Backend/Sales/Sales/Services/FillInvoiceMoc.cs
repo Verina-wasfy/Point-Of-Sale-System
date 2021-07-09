@@ -36,9 +36,7 @@ namespace Sales.Services
             _db.Invoices.Add(NewInvoice);
 
 
-            //for(int i=0; i < InvDet.count; i++)
-            //{ 
-            //}
+            
 
             var DetailsInvoice = new Invoice_Details()
             {
