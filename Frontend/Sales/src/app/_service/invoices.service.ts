@@ -13,6 +13,6 @@ export class InvoicesService {
   }
 
   getInvoiceById(){
-    return this.http.get<Invoice[]>("jiuhuh");
+    return this.http.get<Invoice[]>("juh");
   }
 }
