@@ -11,4 +11,12 @@ export class CustomersService {
   getAllCustomers(){
     return this.http.get<Customer[]>("https://localhost:44365/api/Customer/Customers");
   }
+
+  addCustomer(addCst:Customer){
+    return this.http.post(
+      'https://localhost:44365/api/Customer',
+      addCst
+    );
+
+  }
 }

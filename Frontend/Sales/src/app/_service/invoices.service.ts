@@ -12,7 +12,13 @@ export class InvoicesService {
     return this.http.get<Invoice[]>("https://localhost:44365/api/AllInvoices/Invoices");
   }
 
-  getInvoiceById(){
-    return this.http.get<Invoice[]>("juh");
+  getInvoiceById(id:any){
+    return this.http.get<Invoice[]>("https://localhost:44365/api/AllInvoices/Invoice/"+id);
+  }
+
+  deleteInvoice(id:any){
+    return this.http.delete(
+      'https://localhost:44365/api/AllInvoices/DeleteInvoiceDetails/'+id
+      );
   }
 }

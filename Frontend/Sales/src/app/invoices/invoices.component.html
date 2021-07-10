@@ -9,7 +9,7 @@
     aria-describedby="search-addon" (keyup)="getSearch(id)" [(ngModel)]="id"/>
 </div>
 
- <a class="btn btncxadd " > <i class="fa fa-plus-square-o" aria-hidden="true"></i> New Customer </a>
+ <a class="btn btncxadd " data-bs-toggle="modal" data-bs-target="#addcxModal" > <i class="fa fa-plus-square-o" aria-hidden="true"></i> New Customer </a>
  <a [routerLink]="['/fillInvoice']"  class="btn btnbilladd " > <i class="fa fa-plus-square-o" aria-hidden="true"></i> New Bill </a>
 </div>
 
@@ -29,7 +29,7 @@
     <tbody class="tbodyy">
 
       <tr *ngFor="let invoice of allInvoices">
-        <th scope="row">{{invoice.invoice_ID}}</th>
+        <th scope="row" >{{invoice.invoice_ID}}</th>
         <td scope="col" >{{invoice.cX_Name}}</td>
         <td scope="col" >{{invoice.invoice_Date | date}}</td>
         <td scope="col" >{{invoice.total_Quantity}}</td>
@@ -37,7 +37,7 @@
         <td scope="col" >
           <a class="btn operationbtn btn-primary"><i class="fa fa-info" aria-hidden="true"></i></a>
 
-          <button type="button" class="btn operationbtn  btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-trash" aria-hidden="true" ></i></button>
+          <button type="button" class="btn operationbtn  btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="deleteInvoice(invoice.invoice_ID)"><i class="fa fa-trash" aria-hidden="true" ></i></button>
           <a class="btn operationbtn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
       </tr>
@@ -47,7 +47,7 @@
 </div>
 <div>
 
-<!-- Modal -->
+<!-- Modal DELETE -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -59,8 +59,34 @@
        <strong>Are you sure you want to delete this invoice ?</strong>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
-        <button type="button" class="btn btn-success">No</button>
+        <button type="button" class="btn btn-danger" ata-bs-dismiss="modal" (click)="delete()">Yes</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" >No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Delete -->
+
+<!-- Modal Add CX -->
+<div class="modal fade" id="addcxModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-plus-circle" aria-hidden="true"></i>New</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="invoice-num">Customer Name:</p>
+        <input type="text" class="input-search  form-control search-slt" id="fName" #fName name="fName"
+          placeholder="Customer Name" [(ngModel)]="newCX.fName"/>
+         
+          <p id="invoice-num">Phone number:</p>
+       <input type="text" class="input-search   form-control search-slt" id="phoneNum" #phoneNum name="phoneNum"
+       placeholder="ex: 1200000000" [(ngModel)]="newCX.phone_Num"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ata-bs-dismiss="modal"(click)="addCst()">Save</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" >No</button>
       </div>
     </div>
   </div>

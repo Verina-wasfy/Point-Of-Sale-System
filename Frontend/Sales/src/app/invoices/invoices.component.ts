@@ -1,7 +1,9 @@
+import { Customer } from './../_models/customer';
 import { Component, OnInit } from '@angular/core';
 import { Invoice } from 'src/app/_models/invoice';
 import { InvoicesService } from '../_service/invoices.service';
 import { Router } from '@angular/router';
+import { CustomersService } from '../_service/customers.service';
 
 @Component({
   selector: 'app-invoices',
@@ -10,11 +12,12 @@ import { Router } from '@angular/router';
 })
 export class InvoicesComponent implements OnInit {
 
-  constructor(public InvoicesService: InvoicesService,  public router:Router) { }
+  constructor(public InvoicesService: InvoicesService,  public customersService: CustomersService,public router:Router) { }
   allInvoices:Invoice[]=[];
   Invoicess:Invoice[]=[];
   id:any;
-
+  toBeDel:any;
+  newCX:Customer=new Customer();
 
   ngOnInit(): void {
     this.InvoicesService.getAllInvoices().subscribe(a=>{
@@ -22,7 +25,6 @@ export class InvoicesComponent implements OnInit {
      this.Invoicess=a;
       console.log(this.allInvoices);
     });
-
 
   }
 
@@ -40,4 +42,30 @@ export class InvoicesComponent implements OnInit {
   
    }
 
+   deleteInvoice(idD:any){
+    debugger;
+this.toBeDel=idD;
+  
+   }
+   delInvoice(){
+     debugger;
+    this.InvoicesService.deleteInvoice(this.toBeDel).subscribe(a=>{
+      
+    })
+   }
+
+   delete(){
+    debugger;
+    this.delInvoice()
+    window.location.reload();
+   }
+
+
+   addCst(){
+    // debugger;
+     this.customersService.addCustomer(this.newCX).subscribe(a=>{
+     // console.log(this.newCX);
+     })
+
+   }
 }

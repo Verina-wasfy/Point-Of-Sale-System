@@ -2,6 +2,7 @@ import { FillInvoiceComponent } from './fill-invoice/fill-invoice.component';
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { InvoicesComponent } from './invoices/invoices.component';
+import{NotFoundComponent} from './not-found/not-found.component';
 
 
 
@@ -9,7 +10,7 @@ const routes: Routes = [
   {path : "" , component:InvoicesComponent },
   {path : "allInvoices" , component:InvoicesComponent },
   {path : "fillInvoice" , component:FillInvoiceComponent },
-  //{path : "**" , component:NotFoundComponent },
+  {path : "**" , component:NotFoundComponent },
 
 ];
 

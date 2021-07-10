@@ -20,7 +20,7 @@
               <th>Unit Price</th>
               <th>Quantity</th>
               <th>Total Price</th>
-              <th colspan="2">Action</th>
+              <th>Action</th>
           </tr>
       </thead>
       <tbody>
@@ -46,13 +46,15 @@
               <td  (click)="deleteRow(i)">
                 <i class="fa fa-trash fa-2x"></i>
               </td>
-              <td  (click)="addRow()" >
-                <i class="fa fa-plus fa-2x"></i>
-              </td>
+             
           </tr>
           <tr>
-          <td colspan="2"></td>
-
+      
+            <td  colspan="2" (click)="addRow()" >
+              <i class="fa fa-plus fa-2x"></i>
+            
+          </td>
+          
           <td>
             <input class="form-control" type="text" [readonly]="true" #unitcost placeholder="Total Quantities " id="totalBillQuan" name="totalBillQuan" />
           </td>
@@ -60,10 +62,8 @@
           <td >
             <input class="form-control" type="text" [readonly]="true" #unitcost placeholder="Total Bill Price " id="totalBillPrice" name="totalBillPrice"/>
           </td>
-          <td colspan="2" style="color: red;">
-           <!-- <strong><i class="fa fa-exclamation" aria-hidden="true"></i> Clear All Table</strong> -->
-          </td>
-        </tr>
+         
+        
       </tbody>
   </table>
 </div>

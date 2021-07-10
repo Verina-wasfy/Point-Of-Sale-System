@@ -21,16 +21,12 @@ namespace Sales.Services
         }
         public async Task<CustomerDataModel> Add(CustomerDataModel Cx)
         {
-           var NewCst = new Customer()
+            int CxId = _db.Customers.ToList().Count() > 0 ? _db.Customers.Max(x => x.Customer_ID) + 1 : 1;
+            var NewCst = new Customer()
            {
-             
+             Customer_ID=CxId,
                 FName = Cx.FName,
-                LName = Cx.LName,
-                Email = Cx.Email,
-                Date_Of_Birth = Cx.Date_Of_Birth,
-                Gender = Cx.Gender,
-                Phone_Num = Cx.Phone_Num,
-                Address = Cx.Address
+                Phone_Num = Cx.Phone_Num
 
             };
             _db.Customers.Add(NewCst);
