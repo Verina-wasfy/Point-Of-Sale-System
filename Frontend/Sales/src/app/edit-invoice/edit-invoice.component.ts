@@ -30,7 +30,7 @@ export class EditInvoiceComponent implements OnInit {
    totalPrc:any;
    totalItems:number=0;
    sumBill:number=0;
-   //objToBeSent:FillInvoice=new FillInvoice();
+   objToBeEdit:FillInvoice=new FillInvoice();
    itmsNam:any[]=[];
    tQuan:any[]=[];
   
@@ -79,8 +79,36 @@ clearAll(){
   this.fieldArray.splice(0);
   this.nameCst=" ";
 }
+
+getPrice(itm:any){
+  this.ItemsInfoService.getPriceById(itm).subscribe(a=>{
+    this.unitPrice.push(a);
+    this.itemsnames.push(itm);
+    console.log(a);
+  })
+}
+
+calculateTotalEach(quantity:any,unitPrice:any){
+let x=quantity*unitPrice;
+this.totalItems=this.totalPriceForOne.length+1;
+  this.totalPriceForOne.push(x);
+  this.tQuan.push(quantity);
+
+
+  console.log(this.totalPriceForOne);
+this.sumBill+=x;
+
+}
+
 //send edited version
 saveEdit(){
 
+  debugger;
+  console.log(this.objToBeEdit);
+
+  this.InvoicesService.addInvoice(this.objToBeEdit).subscribe(a=>{
+
+  this.router.navigateByUrl('/allInvoices')
+})
 }
 }

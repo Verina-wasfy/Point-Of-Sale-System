@@ -24,24 +24,25 @@
           </tr>
       </thead>
       <tbody>
-           <tr *ngFor="let field of fieldArray; let i = index">
+           <tr *ngFor="let invoice of invoiceDetails.item_Name;let i=index ">
 
               <td >
-                <input  class="form-control" type="text" #itmselect id="itemsnames" name="itmnames" placeholder="Item Name"  list="itmnames"/>
-                <datalist id="itmnames">
-                  <option
-                  >
+                <input  class="form-control" type="text" #itmselect id="itemsnames" name="itmnames" placeholder="{{invoice}}" (change)="getPrice(itmselect.value)" list="itmnames"/>
+                <datalist id="itmnames" >
+                  <option *ngFor="let itm of allItems"
+                  [value]="itm.item_Name">{{ itm.item_Name }}
                   </option>
                 </datalist>
               </td>
               <td>
-                <input class="form-control" type="text" [readonly]="true" #unitcost placeholder=" L.E" id="priceForOne" name="priceForOne"   />
+                <p class="form-control" type="text" #unitcost  id="priceForOne" name="priceForOne" > {{unitPrice[i]}} L.E</p>
               </td>
               <td>
                 <input  class="form-control" type="text"#quantity placeholder="Quantity" />
               </td>
               <td>
-                <input  class="form-control" type="text"   id="totalPrc" [readonly]="true" placeholder=" L.E" />
+                <p  class="form-control" type="text"  [(ngModel)]="fieldArray[i].totalPrc" id="totalPrc"  > {{totalPriceForOne[i]}} L.E</p>
+
               </td>
               <td (click)="deleteRow(i)">
                 <i class="fa fa-trash fa-2x"></i>

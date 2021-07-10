@@ -107,7 +107,7 @@ addBill(){
   this.objToBeSent.tPrice_PerTotalItems=this.totalPriceForOne;
   this.objToBeSent.tQuantity_PerItem=this.tQuan;
   this.objToBeSent.item_Name=this.itemsnames;
-debugger;
+
   console.log(this.objToBeSent);
 
   this.InvoicesService.addInvoice(this.objToBeSent).subscribe(a=>{
