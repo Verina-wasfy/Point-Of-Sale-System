@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class FillInvoiceComponent implements OnInit {
 
   constructor(public CustomersService: CustomersService, public ItemsInfoService:ItemsInfoService, public router:Router,public toastr: ToastrService) { }
-  idCst:number[]=[];
+  nameCst:string="";
   itemsnames:number[]=[];
   allCst:Customer[]=[];
   allItems:ItemsDetails[]=[];
@@ -44,6 +44,12 @@ export class FillInvoiceComponent implements OnInit {
     // })
 
   }
+  onChange(){
+    this.getItemsNames();
+    this.getPrice;
+    this.calculateTotalEach;
+
+  }
 getItemsNames(){
   this.ItemsInfoService.getAllItems().subscribe(a=>{
     this.allItems=a;
@@ -58,19 +64,27 @@ getPrice(itm:any){
 }
 
 calculateTotalEach(quantity:any,unitPrice:any){
-  debugger;
+
   this.totalPriceForOne=quantity*unitPrice;
   console.log(this.totalPriceForOne);
 
 }
 
 addRow(){
-  debugger;
+
   this.fieldArray.push(this.newAttribute)
   this.newAttribute = {};
+  this.getItemsNames();
+  this.getPrice;
+  this.calculateTotalEach;
+
 }
 deleteRow(index:any){
   this.fieldArray.splice(index, 1);
+}
+clearAll(){
+  this.fieldArray.splice(0);
+  this.nameCst=" ";
 }
 
 //   addRow(index) {

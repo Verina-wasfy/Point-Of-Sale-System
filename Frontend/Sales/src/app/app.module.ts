@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { FillInvoiceComponent } from './fill-invoice/fill-invoice.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -14,6 +17,9 @@ import { FillInvoiceComponent } from './fill-invoice/fill-invoice.component';
     AppComponent,
     InvoicesComponent,
     FillInvoiceComponent,
+    NavbarComponent,
+    FooterComponent,
+    NotFoundComponent,
 
 
   ],

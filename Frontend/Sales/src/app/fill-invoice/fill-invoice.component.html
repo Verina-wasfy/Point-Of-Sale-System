@@ -1,13 +1,14 @@
 <div class="upper-part">
   <div class="input-group">
     <p id="invoice-num">Customer Name:</p>
-   <input type="text" class=" input-search searchinput rounded" #cstselect id="customer" name="cstnames" placeholder="Customer Name" [(ngModel)]="idCst" list="cstnames"/>
+   <input type="text" class=" input-search searchinput rounded" #cstselect id="customer" name="cstnames" placeholder="Customer Name" [(ngModel)]="nameCst" list="cstnames"/>
 <datalist id="cstnames">
   <option *ngFor="let cst of allCst"
   [value]="cst.fName">{{ cst.fName }}
   </option>
 </datalist>
  </div>
+ <a class="btn btncxadd " (click)="clearAll()">  Clear All </a>
  </div>
 
 <div class="container" style="margin-top: 5%">
@@ -19,7 +20,7 @@
               <th>Unit Price</th>
               <th>Quantity</th>
               <th>Total Price</th>
-              <th>Action</th>
+              <th colspan="2">Action</th>
           </tr>
       </thead>
       <tbody>
@@ -34,23 +35,35 @@
                 </datalist>
               </td>
               <td>
-                <input class="form-control" type="text" [readonly]="true" #unitcost placeholder="{{this.unitPrice}}" id="priceForOne" name="priceForOne" [(ngModel)]="fieldArray[i].priceForOne"  />
+                <input class="form-control" type="text" [readonly]="true" #unitcost placeholder="{{this.unitPrice}} L.E" id="priceForOne" name="priceForOne" [(ngModel)]="fieldArray[i].priceForOne"  />
               </td>
               <td>
                 <input  class="form-control" type="text"#quantity placeholder="Quantity" (change)="calculateTotalEach(quantity.value,this.unitPrice)" id="quantity"[(ngModel)]="fieldArray[i].quantity"/>
               </td>
               <td>
-                <input  class="form-control" type="text"  [(ngModel)]="fieldArray[i].totalPrc" id="totalPrc" [readonly]="true" placeholder="{{this.totalPriceForOne}}" />
+                <input  class="form-control" type="text"  [(ngModel)]="fieldArray[i].totalPrc" id="totalPrc" [readonly]="true" placeholder="{{this.totalPriceForOne}} L.E" />
               </td>
               <td  (click)="deleteRow(i)">
                 <i class="fa fa-trash fa-2x"></i>
               </td>
+              <td  (click)="addRow()" >
+                <i class="fa fa-plus fa-2x"></i>
+              </td>
           </tr>
           <tr>
-            <td  (click)="addRow()" >
-              <i class="fa fa-plus fa-2x"></i>
-            </td>
-          </tr>
+          <td colspan="2"></td>
+
+          <td>
+            <input class="form-control" type="text" [readonly]="true" #unitcost placeholder="Total Quantities " id="totalBillQuan" name="totalBillQuan" />
+          </td>
+
+          <td >
+            <input class="form-control" type="text" [readonly]="true" #unitcost placeholder="Total Bill Price " id="totalBillPrice" name="totalBillPrice"/>
+          </td>
+          <td colspan="2" style="color: red;">
+           <!-- <strong><i class="fa fa-exclamation" aria-hidden="true"></i> Clear All Table</strong> -->
+          </td>
+        </tr>
       </tbody>
   </table>
 </div>
