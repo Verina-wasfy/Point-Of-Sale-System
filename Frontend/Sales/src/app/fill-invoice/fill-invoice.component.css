@@ -22,3 +22,10 @@ margin-left:5.5rem;
   font-weight: bold;
 }
 
+.btnbilladd{
+  margin: 0.2rem;
+  width:8rem;
+  background-color: rgb(16, 146, 103);
+  color: white;
+}
+

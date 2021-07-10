@@ -10,6 +10,8 @@ import { FillInvoiceComponent } from './fill-invoice/fill-invoice.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { InvoiceDetailsComponent } from './invoice-details/invoice-details.component';
+import { EditInvoiceComponent } from './edit-invoice/edit-invoice.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavbarComponent,
     FooterComponent,
     NotFoundComponent,
+    InvoiceDetailsComponent,
+    EditInvoiceComponent,
 
 
   ],

@@ -5,7 +5,8 @@ import { Customer } from './../_models/customer';
 import { Component, OnInit } from '@angular/core';
 import { CustomersService } from '../_service/customers.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
+import { InvoicesService } from './../_service/invoices.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FillInvoiceComponent implements OnInit {
 
-  constructor(public CustomersService: CustomersService, public ItemsInfoService:ItemsInfoService, public router:Router,public toastr: ToastrService) { }
+  constructor(public CustomersService: CustomersService, public ItemsInfoService:ItemsInfoService, public router:Router,public InvoicesService:InvoicesService ) { }
   nameCst:string="";
   itemsnames:number[]=[];
   allCst:Customer[]=[];
@@ -44,12 +45,7 @@ export class FillInvoiceComponent implements OnInit {
     // })
 
   }
-  onChange(){
-    this.getItemsNames();
-    this.getPrice;
-    this.calculateTotalEach;
-
-  }
+ 
 getItemsNames(){
   this.ItemsInfoService.getAllItems().subscribe(a=>{
     this.allItems=a;
@@ -74,9 +70,7 @@ addRow(){
 
   this.fieldArray.push(this.newAttribute)
   this.newAttribute = {};
-  this.getItemsNames();
-  this.getPrice;
-  this.calculateTotalEach;
+ 
 
 }
 deleteRow(index:any){
@@ -87,22 +81,8 @@ clearAll(){
   this.nameCst=" ";
 }
 
-//   addRow(index) {
-//     this.newDynamic = {title1: "", title2: "",title3:""};
-//     this.dynamicArray.push(this.newDynamic);
-//    this.toastr.success('New row added successfully', 'New Row');
-//     console.log(this.dynamicArray);
-//     return true;
-// }
+addBill(){
 
-// deleteRow(index) {
-//     if(this.dynamicArray.length ==1) {
-//       this.toastr.error("Can't delete the row when there is only one row", 'Warning');
-//         return false;
-//     } else {
-//         this.dynamicArray.splice(index, 1);
-//         this.toastr.warning('Row deleted successfully', 'Delete row');
-//         return true;
-//     }  }
-
+  this.router.navigateByUrl('/allInvoices')
+}
 }

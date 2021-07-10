@@ -62,7 +62,7 @@ this.toBeDel=idD;
 
 
    addCst(){
-    // debugger;
+     debugger;
      this.customersService.addCustomer(this.newCX).subscribe(a=>{
      // console.log(this.newCX);
      })
