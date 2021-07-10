@@ -37,19 +37,11 @@ namespace Sales.Services
             };
             _db.Invoices.Add(NewInvoice);
 
-            //List<string> Items = new List<string>();
-            //List<double> UnitPrice = new List<double>();
-            //List<double> TPricePerTotalItems = new List<double>();
-            //List<int> TQuantityPerItem = new List<int>();
-            //var DetailsInvoice = new Invoice_Details();
             var DetailsInvoice = new List<Invoice_Details>();
 
             for (int i = 0; i < InvDet.TPrice_PerTotalItems.Count; i++)
             {
-                //Items[i] = InvDet.Item_Name[i];
-                //UnitPrice[i] = InvDet.Unit_Price[i];
-                //TPricePerTotalItems[i] = InvDet.TPrice_PerTotalItems[i];
-                //TQuantityPerItem[i]= InvDet.TQuantity_PerItem[i];
+           
                 var ItemID = _db.Items.FirstOrDefault(x => x.Item_Name == InvDet.Item_Name[i]);
                 DetailsInvoice.Add(new Invoice_Details()
                 {
@@ -60,8 +52,7 @@ namespace Sales.Services
                     UnitPrice = InvDet.Unit_Price[i],
 
                 }) ;
-                 // _db.Invoice_Details.Add(DetailsInvoice[i]);
-
+                 
             }
 
             await _db.Invoice_Details.AddRangeAsync(DetailsInvoice);
