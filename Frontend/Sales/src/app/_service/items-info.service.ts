@@ -13,7 +13,7 @@ export class ItemsInfoService {
     return this.http.get<ItemsDetails[]>("https://localhost:44365/api/Items/Items");
   }
 
-  getPriceById(id:any){
-    return this.http.get<number>("https://localhost:44365/api/Items/UnitPrice/"+id);
+  getPriceById(name:any){
+    return this.http.get<string>("https://localhost:44365/api/Items/UnitPrice/"+name);
   }
 }

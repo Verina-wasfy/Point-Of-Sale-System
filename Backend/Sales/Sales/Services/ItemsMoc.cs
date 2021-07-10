@@ -39,9 +39,9 @@ namespace Sales.Services
             return AllItems;
         }
 
-        public async Task<int>  GetUnitPriceByID(int ID)
+        public async Task<int>  GetUnitPriceByID(string name)
         {
-            var Item = await _db.Items.FindAsync(ID);
+            var Item = await _db.Items.FirstOrDefaultAsync(x=>x.Item_Name==name);
             var UnitPrice =(int) Item.Unit_Price;
             return UnitPrice;
 

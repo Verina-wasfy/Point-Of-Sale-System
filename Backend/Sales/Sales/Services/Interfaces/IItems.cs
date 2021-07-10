@@ -9,6 +9,6 @@ namespace Sales.Services.Interfaces
     public interface IItems
     {
         Task<List<ItemsModel>> GetAll();
-        Task<int> GetUnitPriceByID(int ID);
+        Task<int> GetUnitPriceByID(string name);
     }
 }
