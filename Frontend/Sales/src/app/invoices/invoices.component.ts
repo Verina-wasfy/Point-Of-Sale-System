@@ -72,4 +72,8 @@ this.toBeDel=idD;
    details(id:any){
   this.router.navigate(['/detailedInvoice/',id])
    }
+
+   edit(id:any){
+    this.router.navigate(['/editInvoice/',id]) 
+   }
 }

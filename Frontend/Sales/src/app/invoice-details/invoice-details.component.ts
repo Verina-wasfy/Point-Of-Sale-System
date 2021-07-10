@@ -13,7 +13,7 @@ export class InvoiceDetailsComponent implements OnInit {
 
   constructor(public router:Router,public InvoicesService:InvoicesService,private ac:ActivatedRoute) { }
 invoiceDetails:FillInvoice=new FillInvoice();
-unitP:any[]| undefined;
+// unitP:any[]| undefined;
 
 
 
@@ -27,8 +27,8 @@ unitP:any[]| undefined;
       console.log(this.invoiceDetails)
  });
 })
-let x=this.unitP=this.invoiceDetails.tQuantity_PerItem;
-    console.log(x);
+// let x=this.unitP=this.invoiceDetails.tQuantity_PerItem;
+    // console.log(x);
   
   }
 

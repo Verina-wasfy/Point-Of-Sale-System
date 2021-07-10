@@ -21,3 +21,10 @@ margin-left:5.5rem;
   align-items: center;
   margin-left:5.5rem;
 }
+.btncxadd{
+  margin-right:5.5rem;
+  width:4rem;
+  background-color: rgb(13, 60, 146);
+  color: white;
+  font-weight: bold;
+}

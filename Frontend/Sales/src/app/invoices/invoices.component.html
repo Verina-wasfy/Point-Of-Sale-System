@@ -37,7 +37,7 @@
         <td scope="col" >
          <button type="button" class="btn operationbtn btn-primary" (click)="details(invoice.invoice_ID)"><i class="fa fa-info" aria-hidden="true"></i></button>
           <button type="button" class="btn operationbtn  btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="deleteInvoice(invoice.invoice_ID)"><i class="fa fa-trash" aria-hidden="true" ></i></button>
-          <button class="btn operationbtn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+          <button class="btn operationbtn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true" (click)="edit(invoice.invoice_ID)"></i></button>
         </td>
       </tr>
        </tbody>
