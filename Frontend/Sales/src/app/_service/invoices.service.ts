@@ -14,7 +14,7 @@ export class InvoicesService {
   }
 
   getInvoiceById(id:any){
-    return this.http.get<Invoice[]>("https://localhost:44365/api/AllInvoices/Invoice/"+id);
+    return this.http.get<Invoice>("https://localhost:44365/api/AllInvoices/Invoice/"+id);
   }
 
   deleteInvoice(id:any){

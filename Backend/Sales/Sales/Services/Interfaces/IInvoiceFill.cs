@@ -9,5 +9,6 @@ namespace Sales.Services.Interfaces
     public interface IInvoiceFill
     {
         Task<InvoiceDetailsModel> Add(InvoiceDetailsModel InvDet);
+        //Task<InvoiceDetailsModel> Edit(InvoiceDetailsModel ObjToEdit);
     }
 }

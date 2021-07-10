@@ -68,5 +68,10 @@ namespace Sales.Services
             _db.SaveChanges();
             return InvDet;
         }
+
+        //public async Task<InvoiceDetailsModel> Edit(InvoiceDetailsModel ObjToEdit)
+        //{
+
+        //}
     }
 }

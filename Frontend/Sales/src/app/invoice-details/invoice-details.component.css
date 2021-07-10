@@ -15,3 +15,9 @@ margin-top:9rem;
 margin-left:5.5rem;
 }
 
+.dateC{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-left:5.5rem;
+}

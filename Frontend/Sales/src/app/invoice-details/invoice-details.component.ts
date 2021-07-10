@@ -12,19 +12,23 @@ import { ActivatedRoute } from '@angular/router';
 export class InvoiceDetailsComponent implements OnInit {
 
   constructor(public router:Router,public InvoicesService:InvoicesService,private ac:ActivatedRoute) { }
-invoiceDetails:FillInvoice[]= [];
+invoiceDetails:FillInvoice=new FillInvoice();
+unitP:any[]| undefined;
+
 
 
   ngOnInit(): void {
 
-    this.ac.params.subscribe(params=>{
-      this.InvoicesService.getInvoiceById(params.id).subscribe(result => {
+    this.ac.params.subscribe(par=>{
+      this.InvoicesService.getInvoiceById(par.id).subscribe(result => {
       this.invoiceDetails=result;
-
+      console.log(result);
+       
       console.log(this.invoiceDetails)
  });
 })
-
+let x=this.unitP=this.invoiceDetails.tQuantity_PerItem;
+    console.log(x);
   
   }
 
