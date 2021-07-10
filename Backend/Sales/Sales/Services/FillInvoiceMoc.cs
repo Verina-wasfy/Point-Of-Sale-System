@@ -69,9 +69,33 @@ namespace Sales.Services
             return InvDet;
         }
 
-        //public async Task<InvoiceDetailsModel> Edit(InvoiceDetailsModel ObjToEdit)
-        //{
+        public async Task<InvoiceDetailsModel> Edit(InvoiceDetailsModel ObjToEdit)
+        {
+            var Invoice = await _db.Invoices.FindAsync(ObjToEdit.Invoice_ID);
 
-        //}
+            Invoice.Invoice_ID = ObjToEdit.Invoice_ID;
+            Invoice.Invoice_Date = ObjToEdit.Invoice_Date;
+            Invoice.CX_ID = ObjToEdit.CX_ID;
+            Invoice.Total_Quantity = ObjToEdit.Total_Quantity;
+            Invoice.Total_Price = ObjToEdit.Total_Price;
+            var DetailsInvoice = new List<Invoice_Details>();
+
+            for (int i = 0; i < ObjToEdit.TPrice_PerTotalItems.Count; i++)
+            {
+                var ItemID = _db.Items.FirstOrDefault(x => x.Item_Name == ObjToEdit.Item_Name[i]);
+                DetailsInvoice.Add(new Invoice_Details()
+                {
+                    Invoice_ID = ObjToEdit.Invoice_ID,
+                     TPrice_PerTotalItems = ObjToEdit.TPrice_PerTotalItems[i],
+                    TQuantity_PerItem = ObjToEdit.TQuantity_PerItem[i],
+                    Item_ID = ItemID.Item_ID,
+                    UnitPrice = ObjToEdit.Unit_Price[i],
+
+                });
+            }
+            await _db.Invoice_Details.AddRangeAsync(DetailsInvoice);
+            _db.SaveChanges();
+            return ObjToEdit;
+        }
     }
 }

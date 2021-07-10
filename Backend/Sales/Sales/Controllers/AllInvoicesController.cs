@@ -50,5 +50,14 @@ namespace Sales.Controllers
             var result = await _BB.Add(InvDet);
             return Ok(result);
         }
+
+        [HttpPut("EditInvoice")]
+        public async Task<IActionResult> EditInvoice(InvoiceDetailsModel c1)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = await _BB.Edit(c1);
+            return Ok(result);
+        }
     }
 }

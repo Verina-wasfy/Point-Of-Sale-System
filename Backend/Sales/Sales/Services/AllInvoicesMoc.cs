@@ -39,7 +39,7 @@ namespace Sales.Services
                 });
             }
 
-            //var usrname=LoadAll.CX_ID.
+           
             return AllInvoices;
         }
 
