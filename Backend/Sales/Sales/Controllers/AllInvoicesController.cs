@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sales.Services.Interfaces;
+using Sales.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace Sales.Controllers
     public class AllInvoicesController : ControllerBase
     {
         private readonly IAllInvoices _db;
+        private readonly IInvoiceFill _BB;
 
-        public AllInvoicesController(IAllInvoices db)
+        public AllInvoicesController(IAllInvoices db,IInvoiceFill BB)
         {
             _db = db;
+            _BB = BB;
         }
 
         [HttpGet("Invoices")]
@@ -36,6 +39,15 @@ namespace Sales.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
             var result = await _db.DeleteInvoiceDetails(id);
+            return Ok(result);
+        }
+
+        [HttpPost("AddInvoice")]
+        public async Task<IActionResult> AddInvoice(InvoiceDetailsModel InvDet)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            var result = await _BB.Add(InvDet);
             return Ok(result);
         }
     }

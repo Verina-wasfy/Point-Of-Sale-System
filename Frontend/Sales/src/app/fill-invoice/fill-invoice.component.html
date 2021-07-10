@@ -35,12 +35,12 @@
                 </datalist>
               </td>
               <td>
-                
+
                 <!-- [(ngModel)]="fieldArray[i].priceForOne" -->
                 <p class="form-control" type="text" #unitcost  id="priceForOne" name="priceForOne" > {{unitPrice[i]}} L.E</p>
               </td>
               <td>
-                <input  class="form-control" type="text"#quantity placeholder="Quantity" (change)="calculateTotalEach(quantity.value,unitPrice[i])" id="quantity"[(ngModel)]="fieldArray[i].quantity"/>
+                <input  class="form-control" type="text"#quantity placeholder="Quantity" (change)="calculateTotalEach(quantity.value,unitPrice[i])" id="quantity" [(ngModel)]="fieldArray[i].quantity"/>
               </td>
               <td>
                 <p  class="form-control" type="text"  [(ngModel)]="fieldArray[i].totalPrc" id="totalPrc"  > {{totalPriceForOne[i]}} L.E</p>

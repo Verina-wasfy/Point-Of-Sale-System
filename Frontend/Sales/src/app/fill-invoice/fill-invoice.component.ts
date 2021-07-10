@@ -18,7 +18,7 @@ export class FillInvoiceComponent implements OnInit {
 
   constructor(public CustomersService: CustomersService, public ItemsInfoService:ItemsInfoService, public router:Router,public InvoicesService:InvoicesService ) { }
   nameCst:string="";
-  itemsnames:string="";
+  itemsnames:number[]=[];
   allCst:Customer[]=[];
   allItems:ItemsDetails[]=[];
   unitPrice:any[]=[];
@@ -33,6 +33,7 @@ export class FillInvoiceComponent implements OnInit {
    sumBill:number=0;
    objToBeSent:FillInvoice=new FillInvoice();
    itmsNam:any[]=[];
+   tQuan:any[]=[];
 
 
   ngOnInit(): void {
@@ -54,6 +55,7 @@ getItemsNames(){
 getPrice(itm:any){
   this.ItemsInfoService.getPriceById(itm).subscribe(a=>{
     this.unitPrice.push(a);
+    this.itemsnames.push(itm);
     console.log(a);
   })
 }
@@ -62,7 +64,9 @@ calculateTotalEach(quantity:any,unitPrice:any){
 let x=quantity*unitPrice;
 this.totalItems=this.totalPriceForOne.length+1;
   this.totalPriceForOne.push(x);
- //this.itemsnames.push(itmsNam);
+  this.tQuan.push(quantity);
+
+
   console.log(this.totalPriceForOne);
 this.sumBill+=x;
 
@@ -98,13 +102,16 @@ addBill(){
   this.objToBeSent.cX_Name=this.nameCst;
   this.objToBeSent.total_Price=this.sumBill;
   this.objToBeSent.total_Quantity=this.totalItems;
+
   this.objToBeSent.unit_Price=this.unitPrice;
   this.objToBeSent.tPrice_PerTotalItems=this.totalPriceForOne;
+  this.objToBeSent.tQuantity_PerItem=this.tQuan;
+  this.objToBeSent.item_Name=this.itemsnames;
+debugger;
+  console.log(this.objToBeSent);
 
-
-  // this.itmsId=
   this.InvoicesService.addInvoice(this.objToBeSent).subscribe(a=>{
-    console.log(this.objToBeSent);
+
   this.router.navigateByUrl('/allInvoices')
 })
 }

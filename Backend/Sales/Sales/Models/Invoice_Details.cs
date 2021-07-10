@@ -17,6 +17,7 @@ namespace Sales.Models
         [Column(Order = 1)]
         [ForeignKey("Invoice")]
         public int Invoice_ID{ get; set; }
+        public double UnitPrice { set; get; }
         public double TPrice_PerTotalItems{ set; get; }
         public int TQuantity_PerItem { set; get; }
     }

@@ -24,8 +24,8 @@ export class InvoicesService {
   }
 
   addInvoice(filInvoice:FillInvoice){
-    return this.http.delete(
-      'https://localhost:44365/api/AllInvoices/DeleteInvoiceDetails/'+filInvoice
+    return this.http.post(
+      'https://localhost:44365/api/AllInvoices/AddInvoice',filInvoice
       );
 
   }

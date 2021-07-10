@@ -14,9 +14,13 @@ namespace Sales.ViewModels
         public double Total_Price { set; get; }
         public int Total_Quantity { set; get; }
 
+
+
         public List<double> TPrice_PerTotalItems { set; get; }
         public List<int> TQuantity_PerItem { set; get; }
         public List<int> Item_ID { get; set; }
+
+
 
         public List<string> Item_Name { set; get; }
         public List<double> Unit_Price { set; get; }
