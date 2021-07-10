@@ -46,18 +46,36 @@ namespace Sales.Services
         public async Task<InvoiceDetailsModel> GetInvoiceByID(int ID)
         {
             var Invoice = await _db.Invoices.FindAsync(ID);
+
+            var InvoiceDetails = _db.Invoice_Details.Where(x => x.Invoice_ID == Invoice.Invoice_ID).ToList();
+
             var Item_Id = await _db.Invoice_Details.FirstOrDefaultAsync(a => a.Invoice_ID == Invoice.Invoice_ID);
+
+            List<string> Items = new List<string>();
+            List<double> UnitPrice = new List<double>();
+            List<double> TPricePerTotalItems = new List<double>();
+            List<int> TQuantityPerItem = new List<int>();
+            
+
+            foreach (var item in InvoiceDetails)
+            {
+               var ItemRow= _db.Items.FirstOrDefault(x=>x.Item_ID==item.Item_ID);
+                Items.Add(ItemRow.Item_Name);
+                UnitPrice.Add(ItemRow.Unit_Price);
+                TPricePerTotalItems.Add(item.TPrice_PerTotalItems);
+                TQuantityPerItem.Add(item.TQuantity_PerItem);
+            }
             InvoiceDetailsModel InvoiceInfo = new InvoiceDetailsModel()
             {
                 Invoice_ID = Invoice.Invoice_ID,
                 Invoice_Date = Invoice.Invoice_Date,
                 CX_Name = _db.Customers.Where(a => a.Customer_ID == Invoice.CX_ID).Select(a => a.FName).FirstOrDefault(),
-                Item_Name = _db.Items.Where(x => x.Item_ID == Item_Id.Item_ID).Select(x => x.Item_Name).FirstOrDefault(),
+                Item_Name = Items,
                 Total_Price=Invoice.Total_Price,
                 Total_Quantity=Invoice.Total_Quantity,
-                TPrice_PerTotalItems=Item_Id.TPrice_PerTotalItems,
-                 TQuantity_PerItem=Item_Id.TQuantity_PerItem,
-                 Unit_Price= _db.Items.Where(x => x.Item_ID == Item_Id.Item_ID).Select(x=>x.Unit_Price).FirstOrDefault()
+                TPrice_PerTotalItems= TPricePerTotalItems,
+                 TQuantity_PerItem= TQuantityPerItem,
+                 Unit_Price= UnitPrice
 
             };
             return InvoiceInfo;

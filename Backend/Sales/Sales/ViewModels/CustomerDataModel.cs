@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Sales.ViewModels
 {
-    public class CustomerssModel
+    public class CustomerDataModel
     {
         public int Customer_ID { set; get; }
         [Required]
         public string FName { set; get; }
-        [Required]
+        
         public string LName { set; get; }
         public string Address { get; set; }
         public string Gender { get; set; }

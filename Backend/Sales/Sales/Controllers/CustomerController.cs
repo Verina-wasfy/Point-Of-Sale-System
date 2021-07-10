@@ -20,9 +20,15 @@ namespace Sales.Controllers
             _db = db;
         }
 
+        [HttpGet("Customers")]
+        public async Task<IActionResult> AllCustomers()
+        {
+            return Ok(await _db.GetAll());
+        }
+
         // POST: api/Customer
         [HttpPost]
-        public async Task<ActionResult<CustomerssModel>> NewCustomer(CustomerssModel Cx)
+        public async Task<ActionResult<CustomerDataModel>> NewCustomer(CustomerDataModel Cx)
         {
             await _db.Add(Cx);
             return Ok(Cx);

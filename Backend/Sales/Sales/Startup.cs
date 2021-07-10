@@ -52,6 +52,7 @@ namespace Sales
             services.AddScoped<IAllInvoices, AllInvoicesMoc>();
             services.AddScoped<ICustomer, CustomerMoc>();
             services.AddScoped<IInvoiceFill, FillInvoiceMoc>();
+            services.AddScoped<IItems, ItemsMoc>();
 
 
 

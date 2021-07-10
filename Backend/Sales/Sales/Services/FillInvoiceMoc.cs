@@ -40,9 +40,9 @@ namespace Sales.Services
 
             var DetailsInvoice = new Invoice_Details()
             {
-                Invoice_ID = NewInvoice.Invoice_ID,
-                TQuantity_PerItem=InvDet.TQuantity_PerItem,
-                TPrice_PerTotalItems=InvDet.TPrice_PerTotalItems,
+                //Invoice_ID = NewInvoice.Invoice_ID,
+                //TQuantity_PerItem=InvDet.TQuantity_PerItem,
+                //TPrice_PerTotalItems=InvDet.TPrice_PerTotalItems,
                 
             };
 

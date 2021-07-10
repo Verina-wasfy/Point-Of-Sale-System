@@ -9,6 +9,7 @@ namespace Sales.Services.Interfaces
 {
     public interface ICustomer
     {
-        Task<CustomerssModel> Add(CustomerssModel Cx);
+        Task<CustomerDataModel> Add(CustomerDataModel Cx);
+        Task<List<CustomerDataModel>> GetAll();
     }
 }

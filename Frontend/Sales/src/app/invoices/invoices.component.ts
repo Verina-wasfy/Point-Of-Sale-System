@@ -11,14 +11,33 @@ import { Router } from '@angular/router';
 export class InvoicesComponent implements OnInit {
 
   constructor(public InvoicesService: InvoicesService,  public router:Router) { }
-  allInvoices:any;
+  allInvoices:Invoice[]=[];
+  Invoicess:Invoice[]=[];
+  id:any;
+
+
   ngOnInit(): void {
     this.InvoicesService.getAllInvoices().subscribe(a=>{
      this.allInvoices=a;
+     this.Invoicess=a;
       console.log(this.allInvoices);
     });
 
 
   }
+
+  getSearch(id:any){
+
+    console.log(id);
+    console.log(typeof(id));
+    debugger;
+    if(id!=""){
+      this.allInvoices=this.allInvoices.filter(a=>a.invoice_ID==id)
+    }
+    else{
+    this.allInvoices=this.Invoicess;
+    ​}
+  
+   }
 
 }

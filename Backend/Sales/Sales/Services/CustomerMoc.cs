@@ -1,6 +1,9 @@
-﻿using Sales.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Sales.Models;
 using Sales.Services.Interfaces;
 using Sales.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -16,7 +19,7 @@ namespace Sales.Services
             _db = db;
            
         }
-        public async Task<CustomerssModel> Add(CustomerssModel Cx)
+        public async Task<CustomerDataModel> Add(CustomerDataModel Cx)
         {
            var NewCst = new Customer()
            {
@@ -34,7 +37,29 @@ namespace Sales.Services
             _db.SaveChanges();
             return Cx;
         }
-                
 
+        public async Task<List<CustomerDataModel>> GetAll()
+        {
+            var LoadAll = await _db.Customers
+                          .ToListAsync();
+
+            var Len = _db.Customers.Count();
+
+            List<CustomerDataModel> AllCst = new List<CustomerDataModel>();
+
+            for (int i = 0; i < Len; i++)
+            {
+
+                AllCst.Add(new CustomerDataModel()
+                {
+                    FName=LoadAll[i].FName,
+                    Phone_Num= LoadAll[i].Phone_Num
+                  
+                });
+            }
+
+
+            return AllCst;
+        }
         }
 }

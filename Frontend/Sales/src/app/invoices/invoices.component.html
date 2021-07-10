@@ -5,9 +5,8 @@
  <div class="upper-part">
  <div class="input-group">
    <p id="invoice-num">Invoice number:</p>
-  <input type="search" class="searchinput rounded" placeholder="Search" aria-label="Search"
-    aria-describedby="search-addon" />
-  <button type="button" class="btn searchbtn btn-outline-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+  <input type="text"  class="searchinput rounded" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon" (keyup)="getSearch(id)" [(ngModel)]="id"/>
 </div>
 
  <a class="btn btncxadd " > <i class="fa fa-plus-square-o" aria-hidden="true"></i> New Customer </a>
@@ -37,7 +36,8 @@
         <td scope="col" >{{invoice.total_Price}}</td>
         <td scope="col" >
           <a class="btn operationbtn btn-primary"><i class="fa fa-info" aria-hidden="true"></i></a>
-          <a class="btn operationbtn  btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+          <button type="button" class="btn operationbtn  btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-trash" aria-hidden="true" ></i></button>
           <a class="btn operationbtn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
         </td>
       </tr>
@@ -47,5 +47,21 @@
 </div>
 <div>
 
-
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-exclamation" aria-hidden="true"></i>Attention</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <strong>Are you sure you want to delete this invoice ?</strong>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-success">No</button>
+      </div>
+    </div>
+  </div>
+</div>
