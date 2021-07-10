@@ -34,15 +34,14 @@
                   </option>
                 </datalist>
               </td>
-              <td>
-                <p class="form-control" type="text" #unitcost  id="priceForOne" name="priceForOne" > {{invoiceDetails.unit_Price}} L.E</p>
+              <td >
+                <p class="form-control" type="text" #unitcost  id="priceForOne" placeholder="Quantity" name="priceForOne" >{{invoiceDetails.unit_Price}} L.E</p>
               </td>
               <td>
-                <input  class="form-control" type="text"#quantity placeholder="{{invoiceDetails.unit_Price}} L.E" (change)="calculateTotalEach(quantity.value,unitPrice[i])" id="quantity" [(ngModel)]="fieldArray[i].quantity"/>
+                <input  class="form-control" type="text"#quantity placeholder="Quantity" placeholder="{{invoiceDetails.tQuantity_PerItem}}" id="quantity" />
               </td>
               <td>
-                <p  class="form-control" type="text"  [(ngModel)]="fieldArray[i].totalPrc" id="totalPrc"  > {{invoiceDetails.tPrice_PerTotalItems}} L.E</p>
-
+                <p  class="form-control" type="text"   id="totalPrc"  > {{invoiceDetails.tPrice_PerTotalItems}} L.E</p>
               </td>
               <td (click)="deleteRow(i)">
                 <i class="fa fa-trash fa-2x"></i>
