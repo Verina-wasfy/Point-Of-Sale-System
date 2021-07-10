@@ -1,3 +1,4 @@
+import { FillInvoice } from './../_models/fill-invoice';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Invoice } from 'src/app/_models/invoice';
@@ -20,5 +21,12 @@ export class InvoicesService {
     return this.http.delete(
       'https://localhost:44365/api/AllInvoices/DeleteInvoiceDetails/'+id
       );
+  }
+
+  addInvoice(filInvoice:FillInvoice){
+    return this.http.delete(
+      'https://localhost:44365/api/AllInvoices/DeleteInvoiceDetails/'+filInvoice
+      );
+
   }
 }

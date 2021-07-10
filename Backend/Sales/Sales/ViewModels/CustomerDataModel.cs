@@ -11,13 +11,7 @@ namespace Sales.ViewModels
         public int Customer_ID { set; get; }
         [Required]
         public string FName { set; get; }
-        
-        //public string LName { set; get; }
-        //public string Address { get; set; }
-        //public string Gender { get; set; }
-        //public string Email { get; set; }
-        //public DateTime Date_Of_Birth { set; get; }
         public int Phone_Num { set; get; }
-       // public string Message { set; get; }
+       
     }
 }

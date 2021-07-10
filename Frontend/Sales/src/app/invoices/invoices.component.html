@@ -35,10 +35,9 @@
         <td scope="col" >{{invoice.total_Quantity}}</td>
         <td scope="col" >{{invoice.total_Price}}</td>
         <td scope="col" >
-          <a class="btn operationbtn btn-primary"><i class="fa fa-info" aria-hidden="true"></i></a>
-
+         <button type="button" class="btn operationbtn btn-primary" (click)="details(invoice.invoice_ID)"><i class="fa fa-info" aria-hidden="true"></i></button>
           <button type="button" class="btn operationbtn  btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="deleteInvoice(invoice.invoice_ID)"><i class="fa fa-trash" aria-hidden="true" ></i></button>
-          <a class="btn operationbtn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+          <button class="btn operationbtn btn-secondary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
         </td>
       </tr>
        </tbody>
@@ -79,7 +78,7 @@
         <p id="invoice-num">Customer Name:</p>
         <input type="text" class="input-search  form-control search-slt" id="fName" #fName name="fName"
           placeholder="Customer Name" [(ngModel)]="newCX.fName"/>
-         
+
           <p id="invoice-num">Phone number:</p>
        <input type="text" class="input-search   form-control search-slt" id="phoneNum" #phoneNum name="phoneNum"
        placeholder="ex: 1200000000" [(ngModel)]="newCX.phone_Num"/>

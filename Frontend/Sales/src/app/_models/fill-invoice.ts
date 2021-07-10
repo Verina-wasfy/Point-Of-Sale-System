@@ -9,12 +9,12 @@ export class FillInvoice {
     public total_Price?:number ,
     public  total_Quantity?:number ,
 
-    public  tPrice_PerTotalItems?:number ,
-    public  tQuantity_PerItem?:number ,
-    public  item_ID?:number ,
+    public  tPrice_PerTotalItems?: any[],
+    public  tQuantity_PerItem?: any[] ,
+    public  item_ID?: any[] ,
 
-    public item_Name?:string,
-    public  unit_Price?:number ,
+    public item_Name?: any[],
+    public  unit_Price?: any[] ,
 
   ){}
 }

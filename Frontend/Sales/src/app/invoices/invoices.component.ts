@@ -39,18 +39,18 @@ export class InvoicesComponent implements OnInit {
     else{
     this.allInvoices=this.Invoicess;
     ​}
-  
+
    }
 
    deleteInvoice(idD:any){
     debugger;
 this.toBeDel=idD;
-  
+
    }
    delInvoice(){
      debugger;
     this.InvoicesService.deleteInvoice(this.toBeDel).subscribe(a=>{
-      
+
     })
    }
 
@@ -67,5 +67,9 @@ this.toBeDel=idD;
      // console.log(this.newCX);
      })
 
+   }
+
+   details(id:any){
+  this.router.navigate(['/detailedInvoice/',id])
    }
 }
