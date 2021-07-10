@@ -24,5 +24,11 @@ namespace Sales.Controllers
         {
             return Ok(await _db.GetAll());
         }
+
+        [HttpGet("UnitPrice/{id}")]
+        public async Task<IActionResult> UnitPriceByID(int id)
+        {
+            return Ok(await _db.GetUnitPriceByID(id));
+        }
     }
 }
