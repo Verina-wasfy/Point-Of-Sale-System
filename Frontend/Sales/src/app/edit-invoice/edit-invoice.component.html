@@ -38,7 +38,7 @@
                 <p class="form-control" type="text" #unitcost  id="priceForOne" name="priceForOne" > {{unitPrice[i]}} L.E</p>
               </td>
               <td>
-                <input  class="form-control" type="text"#quantity placeholder="Quantity" />
+                <input  class="form-control" type="text"#quantity placeholder="Quantity" (change)="calculateTotalEach(quantity.value,unitPrice[i])" id="quantity" [(ngModel)]="fieldArray[i].quantity"/>
               </td>
               <td>
                 <p  class="form-control" type="text"  [(ngModel)]="fieldArray[i].totalPrc" id="totalPrc"  > {{totalPriceForOne[i]}} L.E</p>
@@ -57,11 +57,11 @@
           </td>
 
           <td>
-            <input class="form-control" type="text" [readonly]="true" #unitcost placeholder="Total Quantities " id="totalBillQuan" name="totalBillQuan" />
+            <p class="form-control" type="text" #unitcost placeholder="Total Quantities "  id="totalBillQuan" name="totalBillQuan">{{invoiceDetails.total_Quantity}}</p>
           </td>
 
           <td >
-            <input class="form-control" type="text" [readonly]="true" #unitcost placeholder="Total Bill Price " id="totalBillPrice" name="totalBillPrice"/>
+            <p class="form-control" type="text" #unitcost placeholder="Total Bill Price "   id="totalBillPrice" name="totalBillPrice">{{invoiceDetails.total_Price}}</p>
           </td>
           <td>
             <button class="btn  bg-btn-success btnbilladd" (click)="saveEdit()"><strong>Save</strong></button>
