@@ -4,7 +4,7 @@
    <p type="text" class=" input-search searchinput rounded" #cstselect id="customer" name="cstnames"  > {{invoiceDetails.cX_Name}}</p>
  </div>
    <a class="btn btncxadd " href="/allInvoices">  Back </a>
- 
+
  </div>
  <div class="dateC">
  <p id="invoice-num" >Issue Date:</p>
@@ -31,13 +31,13 @@
 
               </td>
               <td >
-                <p class="form-control" type="text" #unitcost  id="priceForOne" name="priceForOne" >{{invoiceDetails.unit_Price}} L.E</p>
+                <p class="form-control" type="text" #unitcost  id="priceForOne" name="priceForOne" >{{priceOne[id]}} L.E</p>
               </td>
               <td>
-                <p  class="form-control" type="text"#quantity placeholder="Quantity"  id="quantity" >{{invoiceDetails.tQuantity_PerItem}}</p>
+                <p  class="form-control" type="text"#quantity placeholder="Quantity"  id="quantity" >{{quan[id]}}</p>
               </td>
               <td>
-                <p  class="form-control" type="text"   id="totalPrc"  > {{invoiceDetails.tPrice_PerTotalItems}} L.E</p>
+                <p  class="form-control" type="text"   id="totalPrc"  > {{test[id]}} L.E</p>
               </td>
 
 
@@ -56,7 +56,7 @@
           <td >
             <p class="form-control" type="text" #unitcost placeholder="Total Bill Price "   id="totalBillPrice" name="totalBillPrice">{{invoiceDetails.total_Price}}</p>
           </td>
-       
+
       </tbody>
   </table>
 </div>

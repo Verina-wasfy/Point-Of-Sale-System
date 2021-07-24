@@ -25,15 +25,25 @@ export class EditInvoiceComponent implements OnInit {
   totalPriceForOne:any[]=[];
   priceForOne:any;
  // groups:FillInvoice[]=[];
-  
+
    quantity:any;
    totalPrc:any;
    totalItems:number=0;
    sumBill:number=0;
    objToBeEdit:FillInvoice=new FillInvoice();
-   itmsNam:any[]=[];
-   tQuan:any[]=[];
-  
+   itmsNam:any=[];
+  //  tQuan:any=[];
+   tun:any=[];
+   ttotoal:any=[]
+
+//details
+   test:any=[];
+  priceOne:any=[];
+  quan:any=[];
+  tPrice:any;
+  tQuan:any;
+
+
   ngOnInit(): void {
 
     this.getItemsNames();
@@ -42,8 +52,14 @@ export class EditInvoiceComponent implements OnInit {
   this.ac.params.subscribe(par=>{
     this.InvoicesService.getInvoiceById(par.id).subscribe(result => {
     this.invoiceDetails=result;
+    this.test=this.invoiceDetails.tPrice_PerTotalItems;
+    this.priceOne=this.invoiceDetails.unit_Price;
+    this.quan=this.invoiceDetails.tQuantity_PerItem;
+    this.itmsNam=this.invoiceDetails.item_Name;
+    this.tPrice=this.invoiceDetails.total_Price;
+    this.tQuan=this.invoiceDetails.total_Quantity
     console.log(result);
-     
+
     console.log(this.invoiceDetails)
 });
 })
@@ -56,24 +72,26 @@ getItemsNames(){
     console.log(a);
   })
 }
+
 addRow(){
-
-  this.fieldArray.push(this.newAttribute)
+  this.itmsNam.push(this.newAttribute)
+  //this.test.push(this.newAttribute)
+  // this.priceOne.push(this.newAttribute)
+ // this.quan.push(this.newAttribute)
   this.newAttribute = {};
-
-
 }
+
 deleteRow(index:any){
-  this.fieldArray.splice(index, 1);
-  let x=this.totalPriceForOne[index];
+  this.itmsNam.splice(index, 1);
+  let x=this.test[index];
   console.log(x);
   let y =this.unitPrice[index];
   console.log(y);
-  let id=this.totalPriceForOne.indexOf(x);
-  this.totalPriceForOne.splice(id,1);
-  this.unitPrice.splice(id,1);
- this.sumBill-=x;
-  this.totalItems= this.totalItems-1;
+  let id=this.test.indexOf(x);
+  this.test.splice(id,1);
+  this.priceOne.splice(id,1);
+ this.tPrice-=x;
+  this.tQuan= this.tQuan-1;
 }
 clearAll(){
   this.fieldArray.splice(0);
@@ -82,31 +100,29 @@ clearAll(){
 
 getPrice(itm:any){
   this.ItemsInfoService.getPriceById(itm).subscribe(a=>{
-    this.unitPrice.push(a);
+    this.priceOne.push(a);
     this.itemsnames.push(itm);
-    console.log(a);
+    console.log(this.priceOne);
   })
 }
 
 calculateTotalEach(quantity:any,unitPrice:any){
 let x=quantity*unitPrice;
-this.totalItems=this.totalPriceForOne.length+1;
-  this.totalPriceForOne.push(x);
-  this.tQuan.push(quantity);
+this.tQuan=this.quan.length+1;
+  this.test.push(x);
+  this.quan.push(quantity);
+  console.log(this.totalItems);
 
-
-  console.log(this.totalPriceForOne);
-this.sumBill+=x;
+this.tPrice+=x;
 
 }
 
 //send edited version
 saveEdit(){
-
   debugger;
   console.log(this.objToBeEdit);
 
-  this.InvoicesService.addInvoice(this.objToBeEdit).subscribe(a=>{
+  this.InvoicesService.editInvoice(this.objToBeEdit).subscribe(a=>{
 
   this.router.navigateByUrl('/allInvoices')
 })

@@ -24,43 +24,42 @@
           </tr>
       </thead>
       <tbody>
-           <tr *ngFor="let invoice of invoiceDetails.item_Name;let i=index ">
-
+           <tr *ngFor="let invoice of itmsNam;let i=index ">
               <td >
-                <input  class="form-control" type="text" #itmselect id="itemsnames" name="itmnames" placeholder="{{invoice}}" (change)="getPrice(itmselect.value)" list="itmnames"/>
-                <datalist id="itmnames" >
+                <input  class="form-control" type="text" #itmselect id="itemsnames" name="itnames" (change)="getPrice(itmselect.value)" list="itnames" placeholder="{{invoice}}"/>
+                <datalist id="itnames" >
                   <option *ngFor="let itm of allItems"
                   [value]="itm.item_Name">{{ itm.item_Name }}
                   </option>
                 </datalist>
               </td>
               <td >
-                <p class="form-control" type="text" #unitcost  id="priceForOne" placeholder="Quantity" name="priceForOne" >{{invoiceDetails.unit_Price}} L.E</p>
+                <p class="form-control" type="text" #unitcost  id="priceForOne" placeholder="Price" name="priceForOne" >{{priceOne[i]}} L.E</p>
               </td>
               <td>
-                <input  class="form-control" type="text"#quantity placeholder="Quantity" placeholder="{{invoiceDetails.tQuantity_PerItem}}" id="quantity" />
+                <input  class="form-control" type="text"#quantity placeholder="Quantity"  (change)="calculateTotalEach(quantity.value,priceOne[i])" id="quantity" value=
+                "{{quan[i]}}"  />
               </td>
               <td>
-                <p  class="form-control" type="text"   id="totalPrc"  > {{invoiceDetails.tPrice_PerTotalItems}} L.E</p>
+                <p  class="form-control" type="text"   id="totalPrc"  > {{test[i]}} L.E</p>
               </td>
               <td (click)="deleteRow(i)">
                 <i class="fa fa-trash fa-2x"></i>
               </td>
-
           </tr>
-          <tr>
 
+          <tr>
             <td  colspan="2" (click)="addRow()" >
               <i class="fa fa-plus fa-2x"></i>
 
           </td>
 
           <td>
-            <p class="form-control" type="text" #unitcost placeholder="Total Quantities "  id="totalBillQuan" name="totalBillQuan">{{invoiceDetails.total_Quantity}}</p>
+            <p class="form-control" type="text" #unitcost placeholder="Total Quantities "  id="totalBillQuan" name="totalBillQuan">{{tQuan}}</p>
           </td>
 
           <td >
-            <p class="form-control" type="text" #unitcost placeholder="Total Bill Price "   id="totalBillPrice" name="totalBillPrice">{{invoiceDetails.total_Price}}</p>
+            <p class="form-control" type="text" #unitcost placeholder="Total Bill Price "   id="totalBillPrice" name="totalBillPrice">{{tPrice}}</p>
           </td>
           <td>
             <button class="btn  bg-btn-success btnbilladd" (click)="saveEdit()"><strong>Save</strong></button>
