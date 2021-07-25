@@ -36,8 +36,8 @@
               </td>
               <td>
 
-             
-                <p class="form-control" type="text" #unitcost  id="priceForOne" name="priceForOne" > {{unitPrice[i]}} L.E</p>
+
+                <p class="form-control" type="text" #unitcost  id="priceForOne" name="priceForOne" [(ngModel)]="fieldArray[i].priceForOne" > {{unitPrice[i]}} L.E</p>
               </td>
               <td>
                 <input  class="form-control" type="text"#quantity placeholder="Quantity" (change)="calculateTotalEach(quantity.value,unitPrice[i])" id="quantity" [(ngModel)]="fieldArray[i].quantity"/>

@@ -94,6 +94,8 @@ deleteRow(index:any){
 clearAll(){
   this.fieldArray.splice(0);
   this.nameCst=" ";
+  this.sumBill=0;
+  this.totalItems=0;
 }
 
 //send data to backend
