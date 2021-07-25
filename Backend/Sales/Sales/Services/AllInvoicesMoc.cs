@@ -75,7 +75,8 @@ namespace Sales.Services
                 Total_Quantity=Invoice.Total_Quantity,
                 TPrice_PerTotalItems= TPricePerTotalItems,
                  TQuantity_PerItem= TQuantityPerItem,
-                 Unit_Price= UnitPrice
+                 Unit_Price= UnitPrice,
+                 CX_ID= Invoice.CX_ID,
 
             };
             return InvoiceInfo;

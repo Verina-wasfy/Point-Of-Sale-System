@@ -29,10 +29,10 @@ export class InvoicesService {
       );
 
   }
-
+///api/AllInvoices/EditInvoice
   editInvoice(editInvoice:FillInvoice){
     return this.http.put<Invoice>(
-      'https://localhost:44365​/api​/AllInvoices​/EditInvoice',editInvoice
+      'https://localhost:44365/api/AllInvoices/EditInvoice',editInvoice
       );
 
   }
